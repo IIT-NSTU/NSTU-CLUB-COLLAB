@@ -7,6 +7,19 @@
         <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
           <table class="table manage-candidates-top mb-0">
             <h2>Main mamber of the club</h2>
+            <?php
+
+include './config.php';
+
+$sql = "select id,name,picture,position,status from managemamber"; 
+
+if($result = mysqli_query($conn, $sql)){
+  if(mysqli_num_rows($result) > 0)
+  {
+
+?>
+
+
             <thead>
               <tr>
                 <th>Name</th>
@@ -15,6 +28,13 @@
               </tr>
             </thead>
             <tbody>
+              <?php
+              
+              while($row = mysqli_fetch_array($result))
+              {
+             
+            
+              ?>
               <tr class="candidates-list">
                 <td class="title">
                   <div class="thumb">
@@ -23,18 +43,18 @@
                   <div class="candidate-list-details">
                     <div class="candidate-list-info">
                       <div class="candidate-list-title">
-                        <h5 class="mb-0"><a href="#">Brooke Kelly</a></h5>
+                        <h5 class="mb-0"><a href="#"><?php echo $row['name'] ?> </a></h5>
                       </div>
                       <div class="candidate-list-option">
                         <ul class="list-unstyled">
-                          <li><i class="fas fa-filter pr-1"></i>Admin</li>
+                          <li><i class="fas fa-filter pr-1"></i><?php echo $row['position'] ?> </li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </td>
                 <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">Active</span>
+                  <span class="candidate-list-time order-1"><?php echo $row['status'] ?></span>
                 </td>
                 <td>
                   <ul class="list-unstyled mb-0 d-flex justify-content-end">
@@ -44,70 +64,10 @@
                   </ul>
                 </td>
               </tr>
-
-              <tr class="candidates-list">
-                <td class="title">
-                  <div class="thumb">
-                    <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                  </div>
-                  <div class="candidate-list-details">
-                    <div class="candidate-list-info">
-                      <div class="candidate-list-title">
-                        <h5 class="mb-0"><a href="#">Watson</a></h5>
-                      </div>
-                      <div class="candidate-list-option">
-                        <ul class="list-unstyled">
-                          <li><i class="fas fa-filter pr-1"></i>Admin</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">Active</span>
-                </td>
-                <td>
-                  <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                    <li><a href="#" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
-                    <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                    <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                  </ul>
-                </td>
-              </tr>
-
-
-
-
-              <tr class="candidates-list">
-                <td class="title">
-                  <div class="thumb">
-                    <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
-                  </div>
-                  <div class="candidate-list-details">
-                    <div class="candidate-list-info">
-                      <div class="candidate-list-title">
-                        <h5 class="mb-0"><a href="#">David</a></h5>
-                      </div>
-                      <div class="candidate-list-option">
-                        <ul class="list-unstyled">
-                          <li><i class="fas fa-filter pr-1"></i>Admin</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">Active</span>
-                </td>
-                <td>
-                  <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                    <li><a href="#" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
-                    <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                    <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                  </ul>
-                </td>
-              </tr>
+              <?php } ?>
             </tbody>
+            <?php } ?>
+  <?php }?>
           </table>
 
         </div>
@@ -125,6 +85,18 @@
         <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
           <table class="table manage-candidates-top mb-0">
             <h2>General members</h2>
+<?php
+
+include './config.php';
+
+$sql = "select id,name,picture,position,status from managemamber"; 
+
+if($result = mysqli_query($conn, $sql)){
+  if(mysqli_num_rows($result) > 0)
+  {
+
+?>
+
             <thead>
               <tr>
                 <th>Name</th>
@@ -134,6 +106,11 @@
               </tr>
             </thead>
             <tbody>
+              <?php 
+               while($row = mysqli_fetch_array($result))
+               {
+              
+              ?>
               <tr class="candidates-list">
                 <td class="title">
                   <div class="thumb">
@@ -142,7 +119,7 @@
                   <div class="candidate-list-details">
                     <div class="candidate-list-info">
                       <div class="candidate-list-title">
-                        <h5 class="mb-0"><a href="#">Brooke Kelly</a></h5>
+                        <h5 class="mb-0"><a href="#"><?php echo $row['name'] ?> </a></h5>
                       </div>
 
                     </div>
@@ -150,7 +127,7 @@
                 </td>
                 
                 <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">General</span>
+                  <span class="candidate-list-time order-1"><?php echo $row['position'] ?></span>
                 </td>
                     
                 <td class="candidate-list-favourite-time text-center">
@@ -164,72 +141,13 @@
                   </ul>
                 </td>
               </tr>
+                <?php } ?>
 
-              <tr class="candidates-list">
-                <td class="title">
-                  <div class="thumb">
-                    <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                  </div>
-                  <div class="candidate-list-details">
-                    <div class="candidate-list-info">
-                      <div class="candidate-list-title">
-                        <h5 class="mb-0"><a href="#">Watson</a></h5>
-                      </div>
-
-                    </div>
-                  </div>
-                </td>
-                       
-                <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">General</span>
-                </td>
-                    
-                <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">Relationship</span>
-                </td>
-                <td>
-                  <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                    <li><a href="#" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
-                    <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                    <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                  </ul>
-                </td>
-              </tr>
-
-
-
-
-              <tr class="candidates-list">
-                <td class="title">
-                  <div class="thumb">
-                    <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
-                  </div>
-                  <div class="candidate-list-details">
-                    <div class="candidate-list-info">
-                      <div class="candidate-list-title">
-                        <h5 class="mb-0"><a href="#">David</a></h5>
-                      </div>
-
-                    </div>
-                  </div>
-                </td>
-                      
-                <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">General</span>
-                </td>
-                    
-                <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">Perfromance</span>
-                </td>
-                <td>
-                  <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                    <li><a href="#" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
-                    <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
-                    <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
-                  </ul>
-                </td>
-              </tr>
             </tbody>
+  <?php } ?>
+  <?php }?>
+
+
           </table>
           <div class="text-center mt-3 mt-sm-3">
             <ul class="pagination justify-content-center mb-0">
@@ -244,6 +162,7 @@
           </div>
         </div>
       </div>
+   
     </div>
   </div>
 </div>
