@@ -89,7 +89,7 @@ if($result = mysqli_query($conn, $sql)){
 
 include './config.php';
 
-$sql = "select id,name,picture,position,status from managemamber"; 
+$sql = "select id,name,status,wing from generalmember"; 
 
 if($result = mysqli_query($conn, $sql)){
   if(mysqli_num_rows($result) > 0)
@@ -127,11 +127,11 @@ if($result = mysqli_query($conn, $sql)){
                 </td>
                 
                 <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1"><?php echo $row['position'] ?></span>
+                  <span class="candidate-list-time order-1"><?php echo $row['status'] ?></span>
                 </td>
                     
                 <td class="candidate-list-favourite-time text-center">
-                  <span class="candidate-list-time order-1">Perfromance</span>
+                  <span class="candidate-list-time order-1"><?php echo $row['wing'] ?></span>
                 </td>
                 <td>
                   <ul class="list-unstyled mb-0 d-flex justify-content-end">
