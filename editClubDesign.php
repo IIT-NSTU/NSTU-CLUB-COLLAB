@@ -16,7 +16,11 @@
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Upload new image</button>
+                    <form action="" method="post">
+                    <div class="mb-3">
+                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -31,7 +35,7 @@
                                 <label for="floatingTextarea2">Description</label>
                                 </div>
                                </br>
-                        <button class="btn btn-primary" type="button">Save changes</button>
+                        <button class="btn btn-primary p-2" type="button">Save changes</button>
                     </form>
                 </div>
             </div>
