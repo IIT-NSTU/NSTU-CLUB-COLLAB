@@ -1,61 +1,117 @@
-<?php
-require './config.php';
-$_SESSION["club_id"] = 27; // User's session Dhrupod club
-$sessionId = $_SESSION["club_id"];
-$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT totall_members FROM clubs WHERE club_id = $sessionId"));
-$total_money = mysqli_fetch_assoc(mysqli_query($conn, "SELECT totall FROM clubmonthypayment WHERE club_id = $sessionId"));
 
 
-?>
-<section>
-<div class="row">
-      <div class="col-12 mt-3 mb-1">
-        <h5 class="text-uppercase">Club info</h5>
-     
-      </div>
+<div class="container">
+<form>
+  <div class="row">
+    <div class="col-3">
+      <input type="text" class="form-control" placeholder="Month">
     </div>
-    <div class="row">
-      <div class="col-xl-3 col-sm-6 col-12 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex justify-content-between px-md-1">
-              <div class="align-self-center">
-              <i class="fa fa-users fa-4x" aria-hidden="true"></i>
-              </div>
-              <div class="text-end">
-                <h3><?php echo $user['totall_members'];?></h3>
-                <p class="mb-0">Members</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6 col-12 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex justify-content-between px-md-1">
-              <div class="align-self-center">
-              <i class="fa fa-money fa-4x" aria-hidden="true"></i>
-              </div>
-              <div class="text-end">
-                <h3><?php echo $total_money['totall'];?></h3>
-                <p class="mb-0">Total Money</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-</section>
+    <div class="col-3">
+      <input type="text" class="form-control" placeholder="Year">
+    </div>
+    <div class="col-3">
+      <input type="text" class="form-control" placeholder="Pay number">
+    </div>
+    
+  </div>
+  <button type="submit" class="btn btn-primary mb-4 px-3 py-1">submit</button>
+</form>
+</div>
 
  <!-- Club info end -->
 
 <div class="container">
- <div class="row">
+
+
+
+
+
 	<div class="col-lg-12">
 		<div class="main-box clearfix">
 			<div class="table-responsive">
 				<table class="table user-list">
                     <h1>Member Payroll</h1>
+
+                  
+<div class="row">
+
+<div class="form-group col-md-3">
+      <label for="inputState">Select month</label>
+      <!-- <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select> -->
+    <select id="inputState" class="form-control" name="month">
+    <option>month</option>
+    <option value="01">January</option>
+    <option value="02">February</option>
+    <option value="03">March</option>
+    <option value="04">April</option>
+    <option value="05">May</option>
+    <option value="06">June</option>
+    <option value="07">July</option>
+    <option value="08">August</option>
+    <option value="09">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+</select>
+</div>
+
+
+<div class="form-group col-md-3">
+ <label for="year">Select Year</label>
+
+ 
+ <select id="year" class="form-control" name="year">
+    <option>year</option>
+    <option value="1990">1990</option>
+    <option value="1991">1991</option>
+    <option value="1992">1992</option>
+    <option value="1993">1993</option>
+    <option value="1994">1994</option>
+    <option value="1995">1995</option>
+    <option value="1996">1996</option>
+    <option value="1997">1997</option>
+    <option value="1998">1998</option>
+    <option value="1999">1999</option>
+    <option value="2000">2000</option>
+    <option value="2001">2001</option>
+    <option value="2002">2002</option>
+    <option value="2003">2003</option>
+    <option value="2004">2004</option>
+    <option value="2005">2005</option>
+    <option value="2006">2006</option>
+    <option value="2007">2007</option>
+    <option value="2008">2008</option>
+    <option value="2009">2009</option>
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+  </select>
+  </div>
+
+
+
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary mb-4 px-3 py-1">Show</button>
+    </div>
+  </div>
+
+
 
                     <?php
 
