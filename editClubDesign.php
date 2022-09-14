@@ -49,13 +49,15 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM club WHERE club_id
             <div class="card mb-4">
                 <div class="card-header">Club Details</div>
                 <div class="card-body">
-                    <form>
+                    <form action="./editclub.php" method="post" >
                     <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                               <input type="hidden"  class="form-control form-control-sm" name="id" value="<?php echo $club_id; ?>"> 
+
+                                <textarea name="textarea" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Description</label>
                                 </div>
                                </br>
-                        <button class="btn btn-primary p-2" type="button">Save changes</button>
+                        <button class="btn btn-primary p-2" type = "submit" name = "save_changes">Save changes</button>
                     </form>
                 </div>
             </div>

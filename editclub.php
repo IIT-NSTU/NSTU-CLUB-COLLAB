@@ -106,6 +106,28 @@ if(isset($_POST["submit"])){
   }
 
   }
+     
+  // Save changes for descriptions
+
+  if(isset($_POST["save_changes"])){
+
+    $id = $_POST["id"];
+    $textarea = $_POST["textarea"];
+
+    $query = "UPDATE club SET club_description = '$textarea' WHERE club_id = $id";
+    mysqli_query($conn, $query);
+    echo
+    "
+    <script>
+    document.location.href = './editclub.php';
+    </script>
+    ";
+
+
+  }
+
+
+
 
 ?>
 </div>
