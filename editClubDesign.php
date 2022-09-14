@@ -1,8 +1,8 @@
 <?php
 require './config.php';
-$_SESSION["club_id"] = 8; // User's session
+$_SESSION["club_id"] = 27; // User's session
 $sessionId = $_SESSION["club_id"];
-$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM club WHERE club_id = $sessionId"));
+$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM clubs WHERE club_id = $sessionId"));
 ?>
 
 <div class="container-xl px-4 mt-4">
@@ -22,7 +22,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM club WHERE club_id
                     <?php
                     $club_id = $user["club_id"];
                     $name = $user["club_description"];
-                    $image = $user["club_img"];
+                    $image = $user["club_image"];
                      ?>
                     
                     <img class="img-account-profile rounded-circle mb-2" src="./clubimages/<?php echo $image; ?>" alt="">

@@ -93,7 +93,7 @@ if(isset($_POST["submit"])){
     else{
       $newImageName = $name . " - " . date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
       $newImageName .= '.' . $imageExtension;
-      $query = "UPDATE club SET club_img = '$newImageName' WHERE club_id = $id";
+      $query = "UPDATE clubs SET club_image = '$newImageName' WHERE club_id = $id";
       mysqli_query($conn, $query);
       move_uploaded_file($tmpName, 'clubimages/' . $newImageName);
       echo
