@@ -1,3 +1,10 @@
+<?php
+require './config.php';
+$_SESSION["club_id"] = 8; // User's session
+$sessionId = $_SESSION["club_id"];
+$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM club WHERE club_id = $sessionId"));
+?>
+
 <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
@@ -12,14 +19,27 @@
                 <div class="card-header">Club Picture</div>
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
-                    <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                    <?php
+                    $club_id = $user["club_id"];
+                    $name = $user["club_description"];
+                    $image = $user["club_img"];
+                     ?>
+                    
+                    <img class="img-account-profile rounded-circle mb-2" src="./clubimages/<?php echo $image; ?>" alt="">
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
-                    <form action="" method="post">
-                    <div class="mb-3">
-                            <input class="form-control form-control-sm" id="formFileSm" type="file">
-                    </div>
+                    <form class="form" id = "form" class="mb-3" action="./editclub.php" method="post" enctype="multipart/form-data">
+   
+                            <!-- <input type="file"  class="form-control form-control-sm" name="club_pics">
+                            <button type="submit" name="club-pics-submit" class="btn btn-primary p-2">Submit</button> -->
+                            <input type="hidden"  class="form-control form-control-sm" name="id" value="<?php echo $club_id; ?>"> 
+
+                            <input type="hidden"  class="form-control form-control-sm" name="name" value="<?php echo $name; ?>"> 
+
+                            <input type="file"  class="form-control form-control-sm" name="image" id = "image" accept=".jpg, .jpeg, .png"> <br>
+                           <button type = "submit" class="btn btn-primary p-2" name = "submit">Submit</button>
+    
                     </form>
                 </div>
             </div>

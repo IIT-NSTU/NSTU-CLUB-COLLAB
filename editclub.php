@@ -22,10 +22,6 @@
 
 
 
-
-
-    
-    
     <title>user Structure</title>
 </head>
 <body> 
@@ -53,6 +49,7 @@
 <?php
 include './config.php';
 
+
 // Check connection
 if ($conn->connect_error) 
 {
@@ -61,53 +58,53 @@ if ($conn->connect_error)
 
 
 if(isset($_POST["submit"])){
+
+  if(isset($_FILES["image"]["name"])){
+    
+    $id = $_POST["id"];
     $name = $_POST["name"];
-    if($_FILES["image"]["error"] == 4){
+
+    $imageName = $_FILES["image"]["name"];
+    $imageSize = $_FILES["image"]["size"];
+    $tmpName = $_FILES["image"]["tmp_name"];
+
+    // Image validation
+    $validImageExtension = ['jpg', 'jpeg', 'png'];
+    $imageExtension = explode('.', $imageName);
+    $imageExtension = strtolower(end($imageExtension));
+    if (!in_array($imageExtension, $validImageExtension)){
       echo
-      "<script> alert('Image Does Not Exist'); </script>"
-      ;
+      "
+      <script>
+        alert('Invalid Image Extension');
+        document.location.href = './editclub.php';
+      </script>
+      ";
+    }
+    elseif ($imageSize > 5000000 ){
+      echo
+      "
+      <script>
+        alert('Image Size Is Too Large');
+        document.location.href = './editclub.php';
+      </script>
+      ";
     }
     else{
-      $fileName = $_FILES["image"]["name"];
-      $fileSize = $_FILES["image"]["size"];
-      $tmpName = $_FILES["image"]["tmp_name"];
-  
-      $validImageExtension = ['jpg', 'jpeg', 'png'];
-      $imageExtension = explode('.', $fileName);
-      $imageExtension = strtolower(end($imageExtension));
-      if ( !in_array($imageExtension, $validImageExtension) ){
-        echo
-        "
-        <script>
-          alert('Invalid Image Extension');
-        </script>
-        ";
-      }
-      else if($fileSize > 1000000){
-        echo
-        "
-        <script>
-          alert('Image Size Is Too Large');
-        </script>
-        ";
-      }
-      else{
-        $newImageName = uniqid();
-        $newImageName .= '.' . $imageExtension;
-  
-        move_uploaded_file($tmpName, 'clubimages/' . $newImageName);
-        // $query = "INSERT INTO tb_upload VALUES('', '$name', '$newImageName')";
-        $query = "INSERT INTO club (club_img) VALUES ('$newImageName')";
-        mysqli_query($conn, $query);
-        echo
-        "
-        <script>
-          alert('Successfully Added');
-          document.location.href = './editclub.php';
-        </script>
-        ";
-      }
+      $newImageName = $name . " - " . date("Y.m.d") . " - " . date("h.i.sa"); // Generate new image name
+      $newImageName .= '.' . $imageExtension;
+      $query = "UPDATE club SET club_img = '$newImageName' WHERE club_id = $id";
+      mysqli_query($conn, $query);
+      move_uploaded_file($tmpName, 'clubimages/' . $newImageName);
+      echo
+      "
+      <script>
+      document.location.href = './editclub.php';
+      </script>
+      ";
     }
+  }
+
   }
 
 ?>
