@@ -1,0 +1,12 @@
+.wrapper--w900 {
+    max-width: 470px;
+  }
+  .page-wrapper {
+    min-height: 70vh;
+    background-color:rgb(255, 255, 255);
+    border-radius:20px;
+  }
+  body{
+
+    background-color:rgb(232, 178, 218);
+  }
